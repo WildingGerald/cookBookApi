@@ -18,4 +18,6 @@ public class ProfileController {
     public List<Profile> index(){
         return profileRepository.findAll();
     }
+
+
 }
