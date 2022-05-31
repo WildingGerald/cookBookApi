@@ -2,6 +2,7 @@ package at.myrecipes.cookBookApi.controler;
 
 import at.myrecipes.cookBookApi.entity.Profile;
 import at.myrecipes.cookBookApi.repository.ProfileRepository;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +16,8 @@ public class ProfileController {
     public ProfileController(ProfileRepository profileRepository){
         this.profileRepository = profileRepository;
     }
+    @GetMapping("/test")
     public List<Profile> index(){
         return profileRepository.findAll();
     }
-
-
 }
