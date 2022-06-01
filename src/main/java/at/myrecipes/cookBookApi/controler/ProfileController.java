@@ -13,11 +13,12 @@ import java.util.List;
 public class ProfileController {
     public ProfileRepository profileRepository;
 
-    public ProfileController(ProfileRepository profileRepository){
+    public ProfileController(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
     }
+
     @GetMapping("/test")
-    public List<Profile> index(){
+    public List<Profile> index() {
         return profileRepository.findAll();
     }
 }

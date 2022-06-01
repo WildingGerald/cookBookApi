@@ -15,18 +15,19 @@ import java.util.stream.Stream;
 @SpringBootApplication
 public class CookBookApiApplication {
 
-	@Autowired
-	private ProfileRepository profileRepository;
+    @Autowired
+    private ProfileRepository profileRepository;
 
-	@PostConstruct
-	public void initTestUser(){
-		List<Profile> profiles = Stream.of(
-				new Profile("hanes", "wurst")
-		).collect(Collectors.toList());
-		profileRepository.saveAll(profiles);
-	}
-	public static void main(String[] args) {
-		SpringApplication.run(CookBookApiApplication.class, args);
-	}
+    @PostConstruct
+    public void initTestUser() {
+        List<Profile> profiles = Stream.of(
+                new Profile("hanes", "wurst")
+        ).collect(Collectors.toList());
+        profileRepository.saveAll(profiles);
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(CookBookApiApplication.class, args);
+    }
 
 }

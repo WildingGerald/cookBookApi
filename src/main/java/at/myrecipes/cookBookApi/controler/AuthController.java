@@ -19,6 +19,7 @@ import javax.validation.Valid;
 @Controller
 @RestController
 @AllArgsConstructor
+@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -28,10 +29,12 @@ public class AuthController {
     ProfileUserDetailService userDetailService;
     @Autowired
     JwtUtil jwtUtil;
-    @GetMapping("/ping")
-    public ResponseEntity ping(){
-        return new ResponseEntity("", HttpStatus.OK);
+
+   @GetMapping("/ping")
+    public String ping() {
+        return "pong";
     }
+
     @PostMapping(value = "/login")
     public ResponseEntity<AuthenticationResponse> login(@Valid @RequestBody LoginDTO loginDTO) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.userName(), loginDTO.password()));
