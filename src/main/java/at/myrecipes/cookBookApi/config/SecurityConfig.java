@@ -1,8 +1,7 @@
 package at.myrecipes.cookBookApi.config;
 
 import at.myrecipes.cookBookApi.filters.JwtRequestFilter;
-import at.myrecipes.cookBookApi.service.ProfileUserDetailService;
-import at.myrecipes.cookBookApi.util.JwtUtil;
+import at.myrecipes.cookBookApi.service.ThisUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private ProfileUserDetailService profileUserDetailService;
+    private ThisUserDetailService thisUserDetailService;
 
     @Autowired
     JwtRequestFilter jwtRequestFilter;
@@ -39,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(profileUserDetailService);
+        auth.userDetailsService(thisUserDetailService);
     }
 
     @Override

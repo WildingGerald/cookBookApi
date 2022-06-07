@@ -2,11 +2,10 @@ package at.myrecipes.cookBookApi.controler;
 
 import at.myrecipes.cookBookApi.dto.AuthenticationResponse;
 import at.myrecipes.cookBookApi.dto.LoginDTO;
-import at.myrecipes.cookBookApi.service.ProfileUserDetailService;
+import at.myrecipes.cookBookApi.service.ThisUserDetailService;
 import at.myrecipes.cookBookApi.util.JwtUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,11 +25,11 @@ public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
-    ProfileUserDetailService userDetailService;
+    ThisUserDetailService userDetailService;
     @Autowired
     JwtUtil jwtUtil;
 
-   @GetMapping("/ping")
+    @GetMapping("/ping")
     public String ping() {
         return "pong";
     }

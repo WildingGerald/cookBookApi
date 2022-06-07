@@ -1,6 +1,6 @@
 package at.myrecipes.cookBookApi.filters;
 
-import at.myrecipes.cookBookApi.service.ProfileUserDetailService;
+import at.myrecipes.cookBookApi.service.ThisUserDetailService;
 import at.myrecipes.cookBookApi.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    ProfileUserDetailService userDetailService;
+    ThisUserDetailService userDetailService;
 
     @Autowired
     JwtUtil jwtUtil;
