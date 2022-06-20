@@ -2,6 +2,8 @@ package at.myrecipes.cookBookApi.controler;
 
 import at.myrecipes.cookBookApi.dto.AuthenticationResponse;
 import at.myrecipes.cookBookApi.dto.LoginDTO;
+import at.myrecipes.cookBookApi.dto.RegistrationDTO;
+import at.myrecipes.cookBookApi.service.AuthService;
 import at.myrecipes.cookBookApi.service.ThisUserDetailService;
 import at.myrecipes.cookBookApi.util.JwtUtil;
 import lombok.AllArgsConstructor;
@@ -21,7 +23,8 @@ import javax.validation.Valid;
 @CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
-
+    @Autowired
+    AuthService authService;
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
@@ -29,9 +32,16 @@ public class AuthController {
     @Autowired
     JwtUtil jwtUtil;
 
+
     @GetMapping("/ping")
     public String ping() {
         return "pong";
+    }
+
+    @PostMapping(value = "/register")
+    public ResponseEntity<AuthenticationResponse> register(@Valid @RequestBody RegistrationDTO registrationDTO) {
+        UserDetails userDetails = authService.register(registrationDTO);
+        return ResponseEntity.ok(new AuthenticationResponse(jwtUtil.generateToken(userDetails)));
     }
 
     @PostMapping(value = "/login")

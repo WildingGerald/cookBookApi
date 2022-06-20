@@ -1,6 +1,5 @@
 package at.myrecipes.cookBookApi.entity;
 
-import at.myrecipes.cookBookApi.util.SocialEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,10 +17,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String username;
+    private String email;
     private String password;
     private String firstname;
     private String lastname;
     private String description;
+    @ElementCollection
     private Map<String, String> socials;
     private String picture;
 

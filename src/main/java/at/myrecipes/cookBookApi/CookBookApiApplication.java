@@ -20,7 +20,7 @@ public class CookBookApiApplication {
     @PostConstruct
     public void initTestUser() {
         List<User> users = Stream.of(
-                new User("hanes", "wurst")
+                new User("hanes", "$2a$10$jcl7kengZL8NOeGI/lp09O/oyHc/ncIdLZg.Qnl9c6JMnNRvSe.Ma")
         ).collect(Collectors.toList());
         userRepository.saveAll(users);
     }
