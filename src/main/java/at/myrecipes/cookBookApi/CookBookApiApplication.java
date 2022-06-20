@@ -1,8 +1,7 @@
 package at.myrecipes.cookBookApi;
 
-import at.myrecipes.cookBookApi.entity.Profile;
-import at.myrecipes.cookBookApi.repository.ProfileRepository;
-import at.myrecipes.cookBookApi.service.ProfileUserDetailService;
+import at.myrecipes.cookBookApi.entity.User;
+import at.myrecipes.cookBookApi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,14 +15,14 @@ import java.util.stream.Stream;
 public class CookBookApiApplication {
 
     @Autowired
-    private ProfileRepository profileRepository;
+    private UserRepository userRepository;
 
     @PostConstruct
     public void initTestUser() {
-        List<Profile> profiles = Stream.of(
-                new Profile("hanes", "wurst")
+        List<User> users = Stream.of(
+                new User("hanes", "$2a$10$jcl7kengZL8NOeGI/lp09O/oyHc/ncIdLZg.Qnl9c6JMnNRvSe.Ma")
         ).collect(Collectors.toList());
-        profileRepository.saveAll(profiles);
+        userRepository.saveAll(users);
     }
 
     public static void main(String[] args) {
