@@ -4,7 +4,7 @@ import javax.validation.constraints.NotEmpty;
 
 public record RegistrationDTO(
     @NotEmpty
-    String userName,
+    String username,
     @NotEmpty
     String email,
     @NotEmpty

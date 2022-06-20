@@ -26,12 +26,12 @@ public class AuthService {
     public UserDetails register(RegistrationDTO registrationDTO) {
         try {
             User user = new User();
-            user.setUsername(registrationDTO.userName());
+            user.setUsername(registrationDTO.username());
             user.setPassword(bCryptPasswordEncoder.encode(registrationDTO.password()));
             user.setEmail(registrationDTO.email());
 
             userRepository.save(user);
-            return userDetailService.loadUserByUsername(registrationDTO.userName());
+            return userDetailService.loadUserByUsername(registrationDTO.username());
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username or email exists already");
         }
