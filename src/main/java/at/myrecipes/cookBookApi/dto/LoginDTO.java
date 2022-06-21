@@ -4,7 +4,7 @@ import javax.validation.constraints.NotEmpty;
 
 public record LoginDTO(
         @NotEmpty
-        String userName,
+        String username,
         @NotEmpty
         String password) {
 }
