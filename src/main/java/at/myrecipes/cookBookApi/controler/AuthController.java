@@ -20,7 +20,6 @@ import javax.validation.Valid;
 @Controller
 @RestController
 @AllArgsConstructor
-@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
