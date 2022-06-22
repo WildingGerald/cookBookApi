@@ -20,7 +20,6 @@ import javax.validation.Valid;
 @Controller
 @RestController
 @AllArgsConstructor
-@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
@@ -49,5 +48,11 @@ public class AuthController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.username(), loginDTO.password()));
         UserDetails userDetails = userDetailService.loadUserByUsername(loginDTO.username());
         return ResponseEntity.ok(new AuthenticationResponse(jwtUtil.generateToken(userDetails)));
+    }
+
+    @PostMapping(value = "/logout")
+    public ResponseEntity<String> logout(){
+        authService.logout();
+        return ResponseEntity.ok("Logged out");
     }
 }

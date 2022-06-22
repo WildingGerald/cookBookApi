@@ -37,6 +37,10 @@ public class AuthService {
         }
     }
 
+    public void logout() {
+        SecurityContextHolder.clearContext();
+    }
+
     @Transactional(readOnly = true)
     public User getCurrentUser() throws ResponseStatusException {
         return userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
