@@ -25,19 +25,19 @@ public class UserController {
     @GetMapping("/getUser")
     public ResponseEntity<UserDTO> getUser(@RequestBody String username) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User doesn't exist"));
-        return ResponseEntity.ok(new UserDTO(user.getUsername(), user.getEmail(), user.getFirstname(), user.getLastname(), user.getDescription()));
+        return ResponseEntity.ok(new UserDTO(user.getUsername(), user.getEmail(), user.getDescription()));
     }
 
     @GetMapping("/getSelf")
     public ResponseEntity<UserDTO> getSelf() {
         User user = userService.getSelf();
-        return ResponseEntity.ok(new UserDTO(user.getUsername(), user.getEmail(), user.getFirstname(), user.getLastname(), user.getDescription()));
+        return ResponseEntity.ok(new UserDTO(user.getUsername(), user.getEmail(), user.getDescription()));
     }
 
     @PutMapping("/updateUser")
     public ResponseEntity<UserDTO> updateUser(@RequestBody @Valid UserDTO userDTO){
         User user = userService.updateUser(userDTO);
-        return ResponseEntity.ok(new UserDTO(user.getUsername(), user.getEmail(), user.getFirstname(), user.getLastname(), user.getDescription()));
+        return ResponseEntity.ok(new UserDTO(user.getUsername(), user.getEmail(), user.getDescription()));
     }
 
     @DeleteMapping("/deleteUser")

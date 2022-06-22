@@ -39,8 +39,6 @@ public class UserService {
         });
 
         user.setUsername(userDTO.username());
-        user.setFirstname(userDTO.firstname());
-        user.setLastname(userDTO.lastname());
         user.setEmail(userDTO.email());
         user.setDescription(userDTO.description());
 
